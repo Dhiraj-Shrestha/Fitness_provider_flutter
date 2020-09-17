@@ -28,22 +28,6 @@ class _AddActivityState extends State<AddActivity> {
     );
   }
 
-  Future<Null> _selectdate(BuildContext context) async {
-    final DateTime _seldate = await showDatePicker(
-      context: context,
-      initialDate: currentdate,
-      firstDate: currentdate,
-      lastDate: currentdate.add(Duration(
-        days: 365,
-      )),
-    );
-    if (_seldate != null) {
-      setState(() {
-        currentdate = _seldate;
-      });
-    }
-  }
-
   var selectedValue = Icons.access_alarm;
   String newTaskTitle1;
   String newTaskTitle2;
