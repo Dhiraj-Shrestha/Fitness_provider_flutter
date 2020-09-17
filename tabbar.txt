@@ -1,0 +1,89 @@
+                  DefaultTabController(
+                    length: 3,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          tabs: _tabTwoParameters(),
+                          indicatorColor: Colors.blue,
+                          indicatorWeight: 3,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          labelColor:
+                              Theme.of(context).textTheme.bodyText1.color,
+                          isScrollable: true,
+
+                          // // controller: tabController,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 2,
+                          decoration: BoxDecoration(
+                              color:
+                                  Provider.of<FitnessData>(context).isDarkModeOn
+                                      ? Color(0xFF000066)
+                                      : Colors.grey[100],
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30))),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text("ACTIVITIES",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "see all",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                              Container(
+                                height: 290,
+                                child: TabBarView(
+                                  // controller: tabController,
+                                  children: [
+                                    CustomCard(
+                                        activitydetails:
+                                            Provider.of<FitnessData>(context)
+                                                .fitnessactivity
+                                                .where((p) =>
+                                                    p.date.month ==
+                                                    (DateTime.now().month))
+                                                .toList()),
+                                    CustomCard(
+                                        activitydetails:
+                                            Provider.of<FitnessData>(context)
+                                                .fitnessactivity
+                                                .where((p) =>
+                                                    p.date.month ==
+                                                    (DateTime.now().month))
+                                                .toList()),
+                                    CustomCard(
+                                        activitydetails:
+                                            Provider.of<FitnessData>(context)
+                                                .fitnessactivity
+                                                .where((p) =>
+                                                    p.date.month ==
+                                                    (DateTime.now().month))
+                                                .toList()),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          // CustomCard(),
+                        ),
+                      ],
+                    ),
+                  ),
